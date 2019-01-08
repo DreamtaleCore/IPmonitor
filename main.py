@@ -2,25 +2,19 @@
 Main logic: if the IP address changed, send the new IP-address as an e-mail to all users
 """
 # -*- coding: UTF-8 -*-
-import socket
 import threading
 import email_factory
 import arguments
+import ip_checker
 
 interval_delay = arguments.get_args().interval_delay
 email_sender = email_factory.get_mail_manager()
 
 
 def check_ip_address():
-    ip_addr = None
-    try:
-        # get the ip address at first
-        # get the computer's name
-        computer_name = socket.getfqdn(socket.gethostname())
-        # get the IP address
-        ip_addr = socket.gethostbyname(computer_name)
-    except Exception:
-        print('Get IP address failed, need next turn and try again.')
+    print('GetTing the recent IP address, it may take a while ...')
+    ip_addr = ip_checker.get_ip()
+    print('The recent IP address is {}.'.format(ip_addr))
 
     is_need_to_send = False
     with open('IP_address.txt', 'r') as fid:
