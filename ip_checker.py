@@ -21,7 +21,7 @@ def _get_public_ip():
         print('Get IP address failed, need next turn and try again.')
         my_ip = None
     else:
-        print('Find such public ip: {}, using the first one.'.format(';'.join(ip_pool)))
+        print('Find such public ip: [{}], using the first one.'.format(';'.join(ip_pool)))
         my_ip = ip_pool[0]
 
     return my_ip

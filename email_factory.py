@@ -21,13 +21,13 @@ class MyEmail:
         self.sender_name = config.sender_name
         self.receiver_name_list = config.receiver_list
 
-        self.smtp_obj = smtplib.SMTP()
+        self.smtp_obj = None
         self.connection_ok = True
         self.send_success = True
-        self.config()
 
     def config(self):
         # 25 is the port number of SMTP protocol
+        self.smtp_obj = smtplib.SMTP()
         self.connection_ok = True
         try:
             self.smtp_obj.connect(self.host, self.port)
@@ -43,6 +43,9 @@ class MyEmail:
             self.connection_ok = False
 
     def send(self, header, text):
+        if self.smtp_obj is None:
+            self.config()
+
         msg = MIMEText(text, 'plain', 'utf-8')
         msg['From'] = Header(self.sender_name)
         msg['Subject'] = Header(header, 'utf-8')

@@ -10,9 +10,9 @@ args.add_argument('--host', type=str, default='smtp.qq.com',
                   help='The host name of sender\'s e-mail.')
 args.add_argument('--port', type=int, default=25,
                   help='The host port of sender\'s e-mail. (e.g. QQ: 456 or 587)')
-args.add_argument('--user', type=str, default='xxxxxxxxx@xxxx.com',
+args.add_argument('--user', type=str, default='xxxxxxxxxx@qq.com',
                   help='The user\'s email name')
-args.add_argument('--password', type=str, default='xxxxxxxxxxxxxxxxx',
+args.add_argument('--password', type=str, default='xxxxxxxxxxx',
                   help='The user\'s email pwd')
 
 args.add_argument('--sender_name', type=str, default='DreamTale',
