@@ -1,17 +1,19 @@
 from urllib import request
 import re
 import socket
+import arguments
 
 
+args = arguments.get_args()
 def _get_public_ip():
     ip_pool = []
     try:
-        my_ip = request.urlopen('http://ip.42.pl/raw').read()
+        my_ip = request.urlopen('http://ip.42.pl/raw', timeout=args.timeout).read()
         ip_pool.append(my_ip.decode('utf-8'))
     except Exception:
         pass
     try:
-        text = request.urlopen('http://ifconfig.me').read()
+        text = request.urlopen('http://ifconfig.me', timeout=args.timeout).read()
         my_ip = re.search(r'\d+.\d+.\d+.\d+', str(text)).group(0)
         ip_pool.append(my_ip)
     except Exception:

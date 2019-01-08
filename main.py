@@ -20,7 +20,9 @@ def check_ip_address():
     is_need_to_send = False
     with open('IP_address.txt', 'r') as fid:
         lines = fid.readlines()
-        if len(lines) == 0:
+        if ip_addr is None:
+            is_need_to_send = False
+        elif len(lines) == 0:
             is_need_to_send = True
         else:
             if lines[0] != ip_addr:

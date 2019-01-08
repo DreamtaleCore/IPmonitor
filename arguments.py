@@ -25,6 +25,8 @@ args.add_argument('--receiver_list', type=list,
                   help='The receivers\' email address list')
 args.add_argument('--interval_delay', type=float, default=10.,
                   help='The interval time of frequency on checking IP.')
+args.add_argument('--timeout', type=float, default=5.,
+                  help='The max time to wait web return the IP address (second).')
 
 
 def get_args():
